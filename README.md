@@ -1,5 +1,5 @@
 # QUIZ-AND-ASSESSMENT-FOR-CONTEMPORARY-ARTS-
-![Image](https://github.com/user-attachments/assets/c0358757-f212-4cd0-ab6e-f28f1d16f1b)
+![Image](https://github.com/user-attachments/assets/0e1c1722-cf9e-42b8-bcf6-b59318e50047)
 ![Image](https://github.com/user-attachments/assets/083e5430-8425-4fe0-8554-3c6e1ef5f19b)
 ![Image](https://github.com/user-attachments/assets/a12a7798-c057-46eb-b53c-40bda59cc1fb)
 ![Image](https://github.com/user-attachments/assets/34898cd2-2dd3-4118-95e8-400d71890dc8)
