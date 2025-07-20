@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Filipino Artists Assessment</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .slide {
+      display: none;
+      height: 100vh;
+      width: 100vw;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      color: white;
+      text-align: center;
+      padding-top: 30vh;
+    }
+
+    .active {
+      display: block;
+    }
+
+    h1 {
+      font-size: 5rem;
+      text-shadow: 3px 3px 10px #000;
+    }
+
+    .number {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 8px #000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slide active" style="background-image: url('fde4e21c5d4096bae2db47f761e25ea5.jpg');">
+    <div class="number">1</div>
+    <h1>UNAJ NAUL</h1>
+  </div>
+
+  <div class="slide" style="background-image: url('386bf6a55bf056d2b74883ae94961ac1.jpg');">
+    <div class="number">2</div>
+    <h1>ITACPA DAAB</h1>
+  </div>
+
+  <div class="slide" style="background-image: url('ab79c3556bb94771221e20e40cfcd726.jpg');">
+    <div class="number">3</div>
+    <h1>LCIRAA YTNITDEI SICISR NAD ITA-NAHITA</h1>
+  </div>
+
+  <div class="slide" style="background-image: url('b7bf2379911d0917482fc5912fc4f30e5.jpg');">
+    <div class="number">4</div>
+    <h1>IAPSMOLRU</h1>
+  </div>
+
+  <div class="slide" style="background-image: url('c4cdcc0490a271dad8cde31b4df80136.jpg');">
+    <div class="number">5</div>
+    <h1>GIAWLKN POCERS</h1>
+  </div>
+
+  <div class="slide" style="background-image: url('562b9176f2e887f45132679cc2b18adb.jpg');">
+    <div class="number">6</div>
+    <h1>RBKIC IANPGTIN</h1>
+  </div>
+
+  <div class="slide" style="background-image: url('Abstract-artistic-hd-1080p-background.jpg');">
+    <div class="number">7</div>
+    <h1>NLFGIY ADIKIN</h1>
+  </div>
+
+  <div class="slide" style="background-image: url('Abstract-artistic-hd-1080p-background.jpg');">
+    <div class="number">8</div>
+    <h1>YAGBA</h1>
+  </div>
+
+  <div class="slide" style="background-image: url('Abstract-artistic-hd-1080p-background.jpg');">
+    <div class="number">9</div>
+    <h1>EDOOBT</h1>
+  </div>
+
+  <div class="slide" style="background-image: url('Abstract-artistic-hd-1080p-background.jpg');">
+    <div class="number">10</div>
+    <h1>SOLOS TXONTEBHII SREDAIR</h1>
+  </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      slides[index].classList.add('active');
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') {
+        current = (current + 1) % slides.length;
+        showSlide(current);
+      } else if (e.key === 'ArrowLeft') {
+        current = (current - 1 + slides.length) % slides.length;
+        showSlide(current);
+      }
+    });
+
+    document.addEventListener('click', () => {
+      current = (current + 1) % slides.length;
+      showSlide(current);
+    });
+  </script>
+
+</body>
+</html>

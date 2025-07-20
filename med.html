@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GIF Background Slides with Flipping and Typing Effect</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .slider-container {
+      perspective: 2000px;
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("Or04.gif");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      z-index: 0;
+      opacity: 0.7;
+    }
+
+    .slide.flip-in {
+      animation: flipIn 0.8s forwards;
+    }
+
+    .slide.flip-out {
+      animation: flipOut 0.8s forwards;
+    }
+
+    @keyframes flipIn {
+      from {
+        transform: rotateY(90deg);
+        opacity: 0;
+      }
+      to {
+        transform: rotateY(0deg);
+        opacity: 1;
+      }
+    }
+
+    @keyframes flipOut {
+      from {
+        transform: rotateY(0deg);
+        opacity: 1;
+      }
+      to {
+        transform: rotateY(-90deg);
+        opacity: 0;
+      }
+    }
+
+    .content {
+      width: 90%;
+      max-width: 850px;
+      height: 80%;
+      max-height: 500px;
+      padding: 20px;
+      border-radius: 55%;
+      border-width: 30px;
+      border-image: url("gold-oval-frame-realistic-isolated-element-museum-picture-photo-border-mirror-decoration-luxury-decorative-corner-portrait-310335848-removebg-preview.png") 30 round;
+      background-color: rgba(255, 255, 255, 0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .wide-content {
+      width: 95%;
+      max-width: 1100px;
+      height: auto;
+      border-radius: 30px;
+      padding: 30px;
+    }
+
+    .content h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      color: black;
+      font-family: Impact, cursive;
+      text-shadow: 5px 5px 5px rgb(208, 255, 0);
+    }
+
+    .content p {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      color: black;
+      background-color: rgba(255, 255, 255, 0.6);
+      padding: 10px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+
+    .nav-buttons {
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    button {
+      padding: 14px 28px;
+      margin: 0 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #000;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      box-shadow: 0 0 10px gold;
+    }
+
+    button:hover {
+      background-color: #333;
+    }
+
+    .falling-emoji {
+      position: fixed;
+      top: -50px;
+      font-size: 2.5rem;
+      animation: fallEmoji 3s linear infinite;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .emoji1 { left: 20%; animation-delay: 0s; }
+    .emoji2 { left: 50%; animation-delay: 1s; }
+    .emoji3 { left: 75%; animation-delay: 2s; }
+
+    @keyframes fallEmoji {
+      0% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(200px) translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* 🟡 Oval with Luna GIF */
+    .oval-bg {
+      width: 200px;
+      height: 250px;
+      background-image: url('luna.gif');
+      background-size: cover;
+      background-position: center;
+      border: 5px solid white;
+      border-radius: 50% / 60%;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="slider-container">
+
+  <!-- Slide 1 -->
+  <section class="slide active">
+    <div class="content">
+      <h1 data-question="Filipino Arts Roles And Contributions to Contemporary Arts QUIZ"></h1>
+      <p>This quiz requires critical thinking skills</p>
+       <img style="height: 250px; width: 250px;" align="bottom-left " 
+             src=
+" cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA3L21vdGFybzdfaXNvbGF0ZWRfYWVzdGhldGljX3BpbmtfZ2xpdHRlcl93YXRlcmNvbG9yX2Nsb3VkX3dpdGhfc185YTU1NTdmNy0zMTA0LTRmMGYtODhlNC1mNmRkNGY4ZGVjYzhfMS5wbmc-removebg-pr.png"
+             alt="">
+    </div>
+  </section>
+
+  <!-- Slide 2 -->
+  <section class="slide">
+    <div class="content wide-content" style="background-image: url('Abstract-artistic-hd-1080p-background.jpg')">
+      <h1 data-question="Known for her quilted paintings and themes of immigration, who was the first Asian American female artist to have the largest U.S. museum retrospective in 2023?"></h1>
+    </div>
+  </section>
+
+  <!-- Slide 3 -->
+  <section class="slide">
+    <div class="content" style="height: 650px; background-image: url('ed43fc9d4426c65fc73b21bd5698c107.jpg'); background-repeat: no-repear; width: 100%; height: auto; background-color: yellow;">
+      <h1  style="height: 500px; "data-question="What are the two paintings that depict everyday scenes of Filipino urban life?"></h1>
+      <h1> #identification question</h1>
+    </div>
+  </section>
+
+  <!-- Slide 4 -->
+  <section class="slide">
+    <div class="content" style="background-color: rgb(226, 131, 7);">
+      <h1 data-question="What kind of issues do Filipino artists address in their works?"></h1>
+    </div>
+  </section>
+
+  <!-- ✅ Slide 5 with LUNA GIF inside oval -->
+  <section class="slide" >
+    <div class="content"style="background-image: url('luna.gif'); background-repeat: no-repeat; width: 100%; height: auto; background-color: blue;">
+      <h1 data-question="What is the name of the painting by Juan Luna? Please provide its second name also."></h1>
+     <div class="wrapper">
+
+  <div class="item">
+    <div class="polaroid"><img src="OIP (9).webp">
+      <div class="caption">I Miss London</div>
+    </div>
+  </div>
+  </div>
+    </div>
+  </section>
+
+  <!-- Slide 6 -->
+  <section class="slide">
+    <div class="content" style="background-color: pink;">
+      <h1 data-question="Popular contemporary Filipino artists"></h1>
+    </div>
+  </section>
+
+  <!-- Slide 7 -->
+  <section class="slide">
+    <div class="content" style="background-color: pink;">
+      <h1 data-question="Influence of global trends in Filipino art"></h1>
+    </div>
+  </section>
+
+  <!-- Slide 8 -->
+  <section class="slide">
+    <div class="content" style="background-color: pink;">
+      <h1 data-question="Preservation of indigenous art forms"></h1>
+    </div>
+  </section>
+
+  <!-- Slide 9 -->
+  <section class="slide">
+    <div class="content" style="background-color: pink;">
+      <h1 data-question="Art as activism: Voices of the youth"></h1>
+    </div>
+  </section>
+
+  <!-- Slide 10 -->
+  <section class="slide">
+    <div class="content" style="background-color: pink;">
+      <h1 data-question="Conclusion: The evolving art scene in the Philippines"></h1>
+    </div>
+  </section>
+
+</div>
+
+<!-- Navigation Buttons -->
+<div class="nav-buttons">
+  <button onclick="prevSlide()">Previous</button>
+  <button onclick="nextSlide()">Next</button>
+</div>
+
+<!-- Falling Star Emojis -->
+<div class="falling-emoji emoji1">🌠</div>
+<div class="falling-emoji emoji2">⭐</div>
+<div class="falling-emoji emoji3">🌟</div>
+
+<!-- JavaScript -->
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll(".slide");
+
+  function typeQuestion(slide) {
+    const h1 = slide.querySelector("h1");
+    if (!h1 || !h1.dataset.question) return;
+
+    const text = h1.dataset.question;
+    h1.textContent = "";
+    let index = 0;
+
+    const interval = setInterval(() => {
+      h1.textContent += text.charAt(index);
+      index++;
+      if (index >= text.length) {
+        clearInterval(interval);
+      }
+    }, 40);
+  }
+
+  function showSlide(index, direction) {
+    slides.forEach(slide => {
+      slide.classList.remove("flip-in", "flip-out", "active");
+    });
+
+    const current = slides[currentSlide];
+    const next = slides[index];
+
+    if (direction === "next") {
+      current.classList.add("flip-out");
+      next.classList.add("flip-in");
+    } else {
+      current.classList.add("flip-out");
+      next.classList.add("flip-in");
+    }
+
+    setTimeout(() => {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+        if (i === index) {
+          slide.classList.add("active");
+          typeQuestion(slide);
+        }
+      });
+      currentSlide = index;
+    }, 500);
+  }
+
+  function nextSlide() {
+    const nextIndex = (currentSlide + 1) % slides.length;
+    showSlide(nextIndex, "next");
+  }
+
+  function prevSlide() {
+    const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(prevIndex, "prev");
+  }
+
+  window.onload = () => {
+    typeQuestion(slides[currentSlide]);
+  };
+</script>
+</body>
+</html>

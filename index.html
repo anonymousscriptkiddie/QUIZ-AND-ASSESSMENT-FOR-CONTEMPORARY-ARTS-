@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GIF Background Slides with Flipping and Typing Effect</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    .slider-container {
+      perspective: 2000px;
+      width: 100%;
+      height: 100vh;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      backface-visibility: hidden;
+      transform-style: preserve-3d;
+      transition: transform 1s;
+    }
+
+    .slide.active {
+      display: flex;
+    }
+
+    .slide::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("Or04.gif");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      z-index: 0;
+      opacity: 0.7;
+    }
+
+    .slide.flip-in {
+      animation: flipIn 0.8s forwards;
+    }
+
+    .slide.flip-out {
+      animation: flipOut 0.8s forwards;
+    }
+
+    @keyframes flipIn {
+      from {
+        transform: rotateY(90deg);
+        opacity: 0;
+      }
+      to {
+        transform: rotateY(0deg);
+        opacity: 1;
+      }
+    }
+
+    @keyframes flipOut {
+      from {
+        transform: rotateY(0deg);
+        opacity: 1;
+      }
+      to {
+        transform: rotateY(-90deg);
+        opacity: 0;
+      }
+    }
+
+    .content {
+      width: 90%;
+      max-width: 850px;
+      height: 80%;
+      max-height: 500px;
+      padding: 20px;
+      border-radius: 55%;
+      border-width: 30px;
+      border-image: url("gold-oval-frame-realistic-isolated-element-museum-picture-photo-border-mirror-decoration-luxury-decorative-corner-portrait-310335848-removebg-preview.png") 30 round;
+      background-color: rgba(255, 255, 255, 0.6);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      position: relative;
+    }
+
+    .wide-content {
+      width: 95%;
+      max-width: 1100px;
+      height: auto;
+      border-radius: 30px;
+      padding: 30px;
+    }
+
+    .content h1 {
+      font-size: 2.5rem;
+      margin: 0;
+      color: black;
+      font-family: Impact, cursive;
+      text-shadow: 5px 5px 5px rgb(208, 255, 0);
+    }
+
+    .content p {
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      color: black;
+      background-color: rgba(255, 255, 255, 0.6);
+      padding: 10px;
+      border-radius: 10px;
+      display: inline-block;
+    }
+
+    .nav-buttons {
+      position: absolute;
+      bottom: 30px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 2;
+    }
+
+    button {
+      padding: 14px 28px;
+      margin: 0 10px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #000;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      box-shadow: 0 0 10px gold;
+    }
+
+    button:hover {
+      background-color: #333;
+    }
+
+    .falling-emoji {
+      position: fixed;
+      top: -50px;
+      font-size: 2.5rem;
+      animation: fallEmoji 3s linear infinite;
+      z-index: 3;
+      pointer-events: none;
+    }
+
+    .emoji1 { left: 20%; animation-delay: 0s; }
+    .emoji2 { left: 50%; animation-delay: 1s; }
+    .emoji3 { left: 75%; animation-delay: 2s; }
+
+    @keyframes fallEmoji {
+      0% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(200px) translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* 🟡 Oval with Luna GIF */
+    .oval-bg {
+      width: 200px;
+      height: 250px;
+      background-image: url('luna.gif');
+      background-size: cover;
+      background-position: center;
+      border: 5px solid white;
+      border-radius: 50% / 60%;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+    body
+{
+  margin:0;
+  padding:0;
+  background:#262626;
+}
+.ring
+{
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:150px;
+  height:150px;
+  background:transparent;
+  border:3px solid #3c3c3c;
+  border-radius:50%;
+  text-align:center;
+  line-height:150px;
+  font-family:sans-serif;
+  font-size:20px;
+  color:#fff000;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  text-shadow:0 0 10px #fff000;
+  box-shadow:0 0 20px rgba(0,0,0,.5);
+}
+.ring:before
+{
+  content:'';
+  position:absolute;
+  top:-3px;
+  left:-3px;
+  width:100%;
+  height:100%;
+  border:3px solid transparent;
+  border-top:3px solid #fff000;
+  border-right:3px solid #fff000;
+  border-radius:50%;
+  animation:animateC 2s linear infinite;
+}
+span
+{
+  display:block;
+  position:absolute;
+  top:calc(50% - 2px);
+  left:50%;
+  width:50%;
+  height:4px;
+  background:transparent;
+  transform-origin:left;
+  animation:animate 2s linear infinite;
+}
+span:before
+{
+  content:'';
+  position:absolute;
+  width:16px;
+  height:16px;
+  border-radius:50%;
+  background:#fff000;
+  top:-6px;
+  right:-8px;
+  box-shadow:0 0 20px #fff000;
+}
+@keyframes animateC
+{
+  0%
+  {
+    transform:rotate(0deg);
+  }
+  100%
+  {
+    transform:rotate(360deg);
+  }
+}
+@keyframes animate
+{
+  0%
+  {
+    transform:rotate(45deg);
+  }
+  100%
+  {
+    transform:rotate(405deg);
+  }
+}
+.flower {
+  filter: drop-shadow(4px 4px 2px rgba(0,0,0,.25));
+  animation: grow 1s forwards;
+}
+@keyframes grow {
+  100% { transform: translateY(0%); }
+}
+
+body {
+  background: linear-gradient(163deg, transparent 0px, transparent 1px, BlanchedAlmond 1px, BlanchedAlmond 14px, transparent 14px), linear-gradient(161deg, transparent 0px, #FFF 2px, BlanchedAlmond 2px, BlanchedAlmond 16px, transparent 16px), linear-gradient(343deg, transparent 0px, transparent 1px, #ffe1b4 1px, BlanchedAlmond 14px, transparent 14px), linear-gradient(343deg, transparent 0px, transparent 1px, #ffe1b4 1px, BlanchedAlmond 14px, transparent 14px);
+  background-color: #FFF;
+  background-size: 48px 30px;
+  background-position: 2px 1px, 23px 16px, 48px 15px, 21px 30px;
+  margin: 0;
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+}
+
+h1 {
+  font-family: system-ui;
+  font-size: 15rem;
+  margin: 0;
+  line-height: 100%;
+  width: fit-content;
+  color: saddleBrown;
+  opacity: .5;
+  text-shadow: 5px 5px rgba(0,0,0,.25);
+}
+  </style>
+</head>
+<body>
+
+<div class="slider-container">
+
+  <!-- Slide 1 -->
+  <section class="slide active">
+    <div class="content" style="background-image: url('562b9176f2e887f45132679cc2b18adb.jpg'); background-repeat: no-repeat; background-size: 1000px 500px; padding: 25px; border: 7px solid black;">
+      <h1> QUIZZ</h1>
+      <p>This quiz requires critical thinking skills</p>
+      <div class="ring">Timer
+  <span></span>
+</div>
+       <img style="height: 250px; width: 250px;" align="bottom-left " 
+             src=
+" cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTA3L21vdGFybzdfaXNvbGF0ZWRfYWVzdGhldGljX3BpbmtfZ2xpdHRlcl93YXRlcmNvbG9yX2Nsb3VkX3dpdGhfc185YTU1NTdmNy0zMTA0LTRmMGYtODhlNC1mNmRkNGY4ZGVjYzhfMS5wbmc-removebg-pr.png"
+             alt="">
+    </div>
+  </section>
+
+  <!-- Slide 2 -->
+  <section class="slide">
+    <div class="content wide-content" style="background-image: url('Abstract-artistic-hd-1080p-background.jpg')">
+      <h1 data-question="He is the Filipino painter, sculptor and a political activist in the Philippine Revolution during the 19th century."></h1>
+      <p> </p>
+    </div>
+  </section>
+
+  <!-- Slide 3 -->
+  <section class="slide">
+    <div class="content" style="height: 650px; background-image: url('ed43fc9d4426c65fc73b21bd5698c107.jpg'); background-repeat: no-repeat; background-size: 1000px 1000px; background-color: yellow;">
+      <h1  style="height: 500px; "data-question="What work of Norberto Roldan was acquired by the Guggenheim Museum as part of the No Country exhibition?"></h1>
+      <p> a. F-11<br>
+    b. F-16<br>
+c.F-14<br>
+d.F-13<br></p>
+    </div>
+  </section>
+
+  <!-- Slide 4 -->
+  <section class="slide">
+    <div class="content" style="background-image: url('66d810efe83db21f0095e5560da18b8f.jpg'); background-repeat: no-repeat; background-size: 1000px 1000px; padding: 25px; border: 7px solid black;">
+      <h1 data-question="Give me the two artworks of Pacita Abad:"></h1>
+      <p>Jumbled answer: LCIRAA YTNITDEI SICISR NAD ITA-NAHITA </p>
+    </div>
+  </section>
+
+  <!-- ✅ Slide 5 with LUNA GIF inside oval -->
+  <section class="slide" >
+    <div class="content"style="background-image: url('luna.gif'); background-repeat: no-repeat;background-size: 1000px 500px; border:5px black;">
+      <h1 data-question="It is the artworks of David Medalia"></h1>
+      <p style="border-style: dashed; border-width: 3px; border-left-width: 10px; border-right-width: 10px; border-color: green;">a. The Beauty and the Beast<br>
+         b. The Parisian Life<br>
+        c. The Divine<br>
+    d. The Cloud Canyons</p>
+     <div class="wrapper">
+    </div>
+  </section>
+
+  <!-- Slide 6 -->
+  <section class="slide">
+    <div class="content" style="background-image: url('8b1f15c04824debdd2d23579c99ab436.jpg'); background-repeat: no-repeat; height: 300%; background-size: 1000px 500px;">
+      <h1 data-question="She is known for her surrealist works that often feauture feminine figures and explore themes of mythology and identity. Who is she?"></h1>
+      <p >a. Agnes Arellano<br>
+    b.Stephanie Syujuco<br>
+c. Pacita Abad<br>
+d. Martha Atienza<br></p>
+    </div>
+  </section>
+
+  <section class="slide">
+    <div class="content" style="background-image: url('c4cdcc0490a271dad8cde31b4df80136.jpg'); background-repeat: no-repeat; height: 300%; background-size: 1000px 500px;">
+      <h1 data-question="It is one of the artworks stephanie  Syujuco"></h1>
+      <p >Flying Dakini<br>
+    b.Brick Painting<br>
+c. Precious Pottery as cutouts<br>
+d. walking corpse<br></p>
+    </div>
+  </section>
+
+  <!-- Slide 8 -->
+  <section class="slide">
+    <div class="content" style="background-color: rgb(219, 198, 8);">
+      <h1 data-question="What kind of issues do Filipino artists address in their works?"></h1>
+    </div>
+  </section>
+
+  <!-- Slide 9 -->
+  <section class="slide">
+    <div class="content" style="background-color: pink;">
+      <h1 data-question="What are the two paintings that depict everyday scenes of Filipino urban life?"></h1>
+    </div>
+  </section>
+
+  <!-- Slide 10 -->
+  <section class="slide">
+    <div class="content" style="background-color: pink;">
+      <h1 data-question="Known for her quilted paintings and themes of immigration, who was the first Asian American female artist to have the largest U.S. museum retrospective in 2023?"></h1>
+    </div>
+  </section>
+
+</div>
+
+<!-- Navigation Buttons -->
+<div class="nav-buttons">
+  <button onclick="prevSlide()">Previous</button>
+  <button onclick="nextSlide()">Next</button>
+</div>
+
+<!-- Falling Star Emojis -->
+<div class="falling-emoji emoji1">🌠</div>
+<div class="falling-emoji emoji2">⭐</div>
+<div class="falling-emoji emoji3">🌟</div>
+
+<!-- JavaScript -->
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll(".slide");
+
+  function typeQuestion(slide) {
+    const h1 = slide.querySelector("h1");
+    if (!h1 || !h1.dataset.question) return;
+
+    const text = h1.dataset.question;
+    h1.textContent = "";
+    let index = 0;
+
+    const interval = setInterval(() => {
+      h1.textContent += text.charAt(index);
+      index++;
+      if (index >= text.length) {
+        clearInterval(interval);
+      }
+    }, 40);
+  }
+
+  function showSlide(index, direction) {
+    slides.forEach(slide => {
+      slide.classList.remove("flip-in", "flip-out", "active");
+    });
+
+    const current = slides[currentSlide];
+    const next = slides[index];
+
+    if (direction === "next") {
+      current.classList.add("flip-out");
+      next.classList.add("flip-in");
+    } else {
+      current.classList.add("flip-out");
+      next.classList.add("flip-in");
+    }
+
+    setTimeout(() => {
+      slides.forEach((slide, i) => {
+        slide.classList.remove("active");
+        if (i === index) {
+          slide.classList.add("active");
+          typeQuestion(slide);
+        }
+      });
+      currentSlide = index;
+    }, 500);
+  }
+
+  function nextSlide() {
+    const nextIndex = (currentSlide + 1) % slides.length;
+    showSlide(nextIndex, "next");
+  }
+
+  function prevSlide() {
+    const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+    showSlide(prevIndex, "prev");
+  }
+
+  window.onload = () => {
+    typeQuestion(slides[currentSlide]);
+  };
+  const canvas = document.getElementById('radar');
+  const ctx = canvas.getContext('2d');
+
+  let width, height;
+  let angle = 0;
+
+  function resize() {
+    width = window.innerWidth * 0.8;
+    height = window.innerWidth * 0.8; // keep it square
+    canvas.width = width;
+    canvas.height = height;
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+
+  function drawRadar() {
+    ctx.clearRect(0, 0, width, height);
+
+    // Draw outer circle
+    ctx.beginPath();
+    ctx.arc(width/2, height/2, width/2 - 10, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(0,255,0,0.2)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Draw sweeping line
+    ctx.save();
+    ctx.translate(width/2, height/2);
+    ctx.rotate(angle);
+    ctx.strokeStyle = 'lime';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(width/2 - 20, 0);
+    ctx.stroke();
+
+    ctx.restore();
+
+    // Draw glitch lines
+    for(let i=0; i<5; i++) {
+      ctx.strokeStyle = `rgba(0, 255, 0, ${0.1 + Math.random() * 0.2})`;
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(Math.random() * width, Math.random() * height);
+      ctx.lineTo(Math.random() * width, Math.random() * height);
+      ctx.stroke();
+    }
+  }
+
+  function animate() {
+    angle += 0.01;
+    drawRadar();
+    requestAnimationFrame(animate);
+  }
+
+  animate();
+var flowers = 19 // not meant to be changed
+function addFlower() {
+  var f = document.createElement('div')
+  f.className = 'flower'
+  f.style.width = '3px'
+  var num = Math.ceil(Math.random() * 15) * 5
+  f.style.height = num + 'vh'
+  f.style.background = 'hsl(10deg,50%,'+(Math.random() * 40 + 20)+'%)'
+  f.style.position = 'fixed'
+  f.style.top = 0
+  f.style.left = flowers * 5 + 2.5 + '%'
+  f.style.transform = 'translateY(-100%)'
+  f.style.animationDelay = Math.random() * 3 + 's'
+  f.style.animationDuration = num * .25 + 's'
+  f.style.borderRadius = '0 0 1rem 1rem'
+  f.style.pointerEvents = 'none'
+  flowers--
+
+  //leafs
+  for(var i=0;i<num*.4;i++) {
+    var l = document.createElement('div')
+    l.className = 'leaf'
+    var side = Math.random() < .5 ? 'transform:scaleX(-1);' : '',
+        show = Math.random() < .5 ? 'hidden' : '',
+        color = 'hsl(150deg,50%,'+(Math.random() * 40 + 20)+'%)'
+    f.innerHTML += `<div class='leaf_box' style='width:3vh;height:2.5vh;background:${color};display:block;visibility:${show};border-radius:0% 75% 0% 75%;transform-origin:1.5px 50%;${side}'></div>`
+  }
+
+  document.body.appendChild(f)
+}
+
+function buildWorld(){
+  flowers = 19
+  for(var i=0;i<20;i++) {
+    addFlower()
+  }
+}
+buildWorld()
+
+window.addEventListener('click', function(){
+  document.body.innerHTML = '<h1>Vines</h1>'
+  buildWorld()
+})
+
+</script>
+</body>
+</html>
